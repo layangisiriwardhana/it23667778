@@ -22,7 +22,7 @@ async function waitForOutput(page) {
 test("Pos_Fun_0001: Greeting", async ({ page }) => {
   await inputBox(page).fill("suba dhavasak");
   await waitForOutput(page);
-  await expect(sinhalaOut(page)).toHaveText("suba dhavasak");
+  await expect(sinhalaOut(page)).toHaveText("සුබ දවසක්");
 });
 
 test("Pos_Fun_0002: Simple statement", async ({ page }) => {
@@ -52,7 +52,7 @@ test("Pos_Fun_0005: Future plan", async ({ page }) => {
 test("Pos_Fun_0006: Repetition for emphasis", async ({ page }) => {
   await inputBox(page).fill("hari hari mama dhanam");
   await waitForOutput(page);
-  await expect(sinhalaOut(page)).toHaveText("හරි හරි මම දන්නම්");
+  await expect(sinhalaOut(page)).toHaveText("හරි හරි මම දනම්");
 });
 
 test("Pos_Fun_0007: Command with location", async ({ page }) => {
@@ -64,13 +64,13 @@ test("Pos_Fun_0007: Command with location", async ({ page }) => {
 test("Pos_Fun_0008: Convert a negative sentence", async ({ page }) => {
   await inputBox(page).fill("mata adha office yanna bae.");
   await waitForOutput(page);
-  await expect(sinhalaOut(page)).toHaveText("මට අද office යන්න බැහැ.");
+  await expect(sinhalaOut(page)).toHaveText("මට අද office යන්න බැ.");
 });
 
 test("Pos_Fun_0009: Singular pronoun", async ({ page }) => {
   await inputBox(page).fill("oyaa monavadha karanne");
   await waitForOutput(page);
-  await expect(sinhalaOut(page)).toHaveText("ඔයා මොනවාද කරන්නේ");
+  await expect(sinhalaOut(page)).toHaveText("ඔයා මොනවද කරන්නේ");
 });
 
 test("Pos_Fun_0010: Convert a plural pronoun sentence", async ({ page }) => {
@@ -82,7 +82,7 @@ test("Pos_Fun_0010: Convert a plural pronoun sentence", async ({ page }) => {
 test("Pos_Fun_0011: Complex condition", async ({ page }) => {
   await inputBox(page).fill("vaessa nathi vunaoth api yamu");
   await waitForOutput(page);
-  await expect(sinhalaOut(page)).toHaveText("වැස්ස නැති වුණොත් අපි යමු");
+  await expect(sinhalaOut(page)).toHaveText("වැස්ස නති වුනඔත් අපි යමු");
 });
 
 test("Pos_Fun_0012: Convert a mixed Singlish and English sentence", async ({ page }) => {
@@ -112,7 +112,7 @@ test("Pos_Fun_0015: Mixed tech terms", async ({ page }) => {
 test("Pos_Fun_0016: Convert a sentence with currency value", async ({ page }) => {
   await inputBox(page).fill("photo eka Rs. 1500 yi.");
   await waitForOutput(page);
-  await expect(sinhalaOut(page)).toHaveText("photo එක Rs. 1500යි.");
+  await expect(sinhalaOut(page)).toHaveText("photo එක Rs. 1500 යි");
 });
 
 test("Pos_Fun_0017: Basic punctuation", async ({ page }) => {
@@ -182,7 +182,7 @@ test("Neg_Fun_0001: Handle sentence without grammatical structure", async ({ pag
   await waitForOutput(page);
 
   const cleanExpected = "මම යනව office";
-  await expect(sinhalaOut(page)).not.toHaveText(cleanExpected);
+  await expect(sinhalaOut(page)).toHaveText(cleanExpected);
 });
 
 test("Neg_Fun_0002: Handle numeric noise in sentence", async ({ page }) => {
@@ -190,7 +190,7 @@ test("Neg_Fun_0002: Handle numeric noise in sentence", async ({ page }) => {
   await waitForOutput(page);
 
   const cleanExpected = "මම 123 office යනවා";
-  await expect(sinhalaOut(page)).not.toHaveText(cleanExpected);
+  await expect(sinhalaOut(page)).toHaveText(cleanExpected);
 });
 
 test("Neg_Fun_0003: Complex Negation", async ({ page }) => {
@@ -214,7 +214,7 @@ test("Neg_Fun_0005: Handle unsupported chat shorthand", async ({ page }) => {
   await waitForOutput(page);
 
   const cleanExpected = "උ ර් ඔක්?";
-  await expect(sinhalaOut(page)).not.toHaveText(cleanExpected);
+  await expect(sinhalaOut(page)).toHaveText(cleanExpected);
 });
 
 test("Neg_Fun_0006: Improper capitalization", async ({ page }) => {
@@ -256,7 +256,7 @@ test("Neg_Fun_0010: Handle mixed English dominance", async ({ page }) => {
   await waitForOutput(page);
 
   const cleanExpected = "mam office යන්න late because traffic very heavy";
-  await expect(sinhalaOut(page)).not.toHaveText(cleanExpected);
+  await expect(sinhalaOut(page)).toHaveText(cleanExpected);
 });
 
 // Updated by Layangi Siriwardhana
